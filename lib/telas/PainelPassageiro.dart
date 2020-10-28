@@ -17,6 +17,8 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
     'Deslogar',
   ];
 
+  Set<Marker> _marcadores = {};
+
   CameraPosition _posicaoCamera = CameraPosition(
     target: LatLng(-23.563999, -46.653256),
   );
@@ -49,6 +51,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
 
     setState(() {
       if (position != null) {
+        _exibirMarcadorPassageiro(position);
         _posicaoCamera = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: 19,
@@ -72,11 +75,32 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
     );
 
     geolocator.getPositionStream(locationOptions).listen((Position position) {
+      _exibirMarcadorPassageiro(position);
       _posicaoCamera = CameraPosition(
         target: LatLng(position.latitude, position.longitude),
         zoom: 19,
       );
       _movimentarCamera(_posicaoCamera);
+    });
+  }
+
+  _exibirMarcadorPassageiro(Position local) async {
+    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
+
+    BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(devicePixelRatio: pixelRatio),
+      'images/passageiro.png',
+    ).then((BitmapDescriptor icone) {
+      Marker marcadorPassageiro = Marker(
+        markerId: MarkerId('marcador-passageiro'),
+        position: LatLng(local.latitude, local.longitude),
+        infoWindow: InfoWindow(title: 'Meu local'),
+        icon: icone,
+      );
+
+      setState(() {
+        _marcadores.add(marcadorPassageiro);
+      });
     });
   }
 
@@ -111,8 +135,9 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
               mapType: MapType.normal,
               initialCameraPosition: _posicaoCamera,
               onMapCreated: _onMapCreated,
-              myLocationEnabled: true,
+              //  myLocationEnabled: true,
               myLocationButtonEnabled: false,
+              markers: _marcadores,
               //-23,559200, -46,658878
             ),
             Positioned(
