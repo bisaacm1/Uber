@@ -5,6 +5,9 @@
   String _senha;
   String _tipoUsuario;
 
+  double _latitude;
+  double _longitude;
+
   Usuario();
 
   Map<String, dynamic> toMap() {
@@ -12,9 +15,23 @@
       'nome': this.nome,
       'email': this.email,
       'tipoUsuario': this.tipoUsuario,
+      'latitude': this.latitude,
+      'longitude': this.longitude,
     };
 
     return map;
+  }
+
+  double get latitude => _latitude;
+
+  set latitude(double value) {
+    _latitude = value;
+  }
+
+  double get longitude => _longitude;
+
+  set longitude(double value) {
+    _longitude = value;
   }
 
   String verificaTipoUsuario(bool tipoUsuario) {
