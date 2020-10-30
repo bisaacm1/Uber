@@ -1,6 +1,6 @@
-﻿import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:uber/model/Destino.dart';
-import 'package:uber/model/Usuario.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'Destino.dart';
+import 'Usuario.dart';
 
 class Requisicao {
   String _id;
@@ -11,53 +11,45 @@ class Requisicao {
 
   Requisicao() {
     Firestore db = Firestore.instance;
-    DocumentReference ref = db.collection('requisicoes').document();
+
+    DocumentReference ref = db.collection("requisicoes").document();
     this.id = ref.documentID;
   }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> dadosPassageiro = {
-      'nome': this.passageiro.nome,
-      'email': this.passageiro.email,
-      'tipoUsuario': this.passageiro.tipoUsuario,
-      'idUsuario': this.passageiro.idUsuario,
+      "nome": this.passageiro.nome,
+      "email": this.passageiro.email,
+      "tipoUsuario": this.passageiro.tipoUsuario,
+      "idUsuario": this.passageiro.idUsuario,
+      "latitude": this.passageiro.latitude,
+      "longitude": this.passageiro.longitude,
     };
 
     Map<String, dynamic> dadosDestino = {
-      'rua': this.destino.rua,
-      'numero': this.destino.numero,
-      'bairro': this.destino.bairro,
-      'cep': this.destino.cep,
-      'latitude': this.destino.latitude,
-      'longitude': this.destino.longitude,
+      "rua": this.destino.rua,
+      "numero": this.destino.numero,
+      "bairro": this.destino.bairro,
+      "cep": this.destino.cep,
+      "latitude": this.destino.latitude,
+      "longitude": this.destino.longitude,
     };
+
     Map<String, dynamic> dadosRequisicao = {
-      'id': this.id,
-      'status': this.status,
-      'passageiro': dadosPassageiro,
-      'motorista': null,
-      'destino': dadosDestino,
+      "id": this.id,
+      "status": this.status,
+      "passageiro": dadosPassageiro,
+      "motorista": null,
+      "destino": dadosDestino,
     };
 
     return dadosRequisicao;
   }
 
-  String get id => _id;
+  Destino get destino => _destino;
 
-  set id(String value) {
-    _id = value;
-  }
-
-  String get status => _status;
-
-  set status(String value) {
-    _status = value;
-  }
-
-  Usuario get passageiro => _passageiro;
-
-  set passageiro(Usuario value) {
-    _passageiro = value;
+  set destino(Destino value) {
+    _destino = value;
   }
 
   Usuario get motorista => _motorista;
@@ -66,9 +58,21 @@ class Requisicao {
     _motorista = value;
   }
 
-  Destino get destino => _destino;
+  Usuario get passageiro => _passageiro;
 
-  set destino(Destino value) {
-    _destino = value;
+  set passageiro(Usuario value) {
+    _passageiro = value;
+  }
+
+  String get status => _status;
+
+  set status(String value) {
+    _status = value;
+  }
+
+  String get id => _id;
+
+  set id(String value) {
+    _id = value;
   }
 }
