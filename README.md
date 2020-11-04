@@ -21,7 +21,7 @@
 
 ### Mobile Screenshot
 <div align="center">
-   <img src="./.github/uber.gif" width="480">
+   <img src="./.github/uber.gif" width="1000">
 </div>   
 
 ## :computer: 🚀 Technologies
