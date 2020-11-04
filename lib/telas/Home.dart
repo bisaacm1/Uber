@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("imagens/fundo.png"), fit: BoxFit.cover),
+              image: AssetImage("assets/images/fundo.png"), fit: BoxFit.cover),
         ),
         padding: EdgeInsets.all(16),
         child: Center(
@@ -113,11 +113,18 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(bottom: 32),
                   child: Container(
                     child: Image.asset(
-                      'imagens/logo.png',
+                      'assets/images/logo.png',
                       width: 100,
                       height: 100,
                     ),
                     decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.8),
+                          offset: Offset(1.0, 6.0),
+                          blurRadius: 40.0,
+                        ),
+                      ],
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
@@ -128,59 +135,96 @@ class _HomeState extends State<Home> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    TextField(
-                      controller: _controllerEmail,
-                      autofocus: true,
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 20),
-                      decoration: InputDecoration(
+                    Material(
+                      borderRadius: BorderRadius.circular(6),
+                      elevation: 30.0,
+                      shadowColor: Colors.black,
+                      child: TextField(
+                        controller: _controllerEmail,
+                        autofocus: true,
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(fontSize: 20),
+                        decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
                           hintText: "E-mail",
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(6))),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                      ),
                     ),
-                    TextField(
-                      controller: _controllerSenha,
-                      obscureText: true,
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 20),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        hintText: "Senha",
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(6),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Material(
+                      borderRadius: BorderRadius.circular(6),
+                      elevation: 30.0,
+                      shadowColor: Colors.black,
+                      child: TextField(
+                        controller: _controllerSenha,
+                        obscureText: true,
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(fontSize: 20),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                          hintText: "Senha",
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 16, bottom: 10),
-                      child: RaisedButton(
-                          child: Text(
-                            "Entrar",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6)),
-                          color: Color(0xff1ebbd8),
-                          padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                          onPressed: () {
-                            _validarCampos();
-                          }),
-                    ),
-                    Center(
-                      child: GestureDetector(
-                        child: Text(
-                          "Não tem conta? cadastre-se!",
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                        onTap: () {
-                          Navigator.pushNamed(context, "/cadastro");
-                        },
+                      child: Material(
+                        borderRadius: BorderRadius.circular(6),
+                        elevation: 30.0,
+                        shadowColor: Colors.black,
+                        child: RaisedButton(
+                            child: Text(
+                              "Entrar",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6)),
+                            color: Color(0xff1ebbd8),
+                            padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                            onPressed: () {
+                              _validarCampos();
+                            }),
                       ),
+                    ),
+                    Container(
+                      child: Center(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Não tem conta? cadastre-se!",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, "/cadastro");
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
                     ),
                     _carregando
                         ? Center(

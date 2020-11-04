@@ -1,16 +1,45 @@
-# uber
+<!-- Logo -->
+<p align="center">
+   <img src="assets/images/icon.png" alt="WhatsApp" width="280"/>
+</p>
 
-A new Flutter project.
 
-## Getting Started
+<p align="center">	
+   <a href="https://www.linkedin.com/in/isaac-batista-b097521a8/">
+      <img alt="Isaac Batista" src="https://img.shields.io/badge/-bisaacm1-8257E5?style=flat&logo=Linkedin&logoColor=white" />
+   </a>
 
-This project is a starting point for a Flutter application.
+</p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# :pushpin: Table of Contents
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* [Technologies](#computer-technologies)
+* [Found a bug? Missing a specific feature?](#bug-issues)
+* [License](#closed_book-license)
+
+
+### Mobile Screenshot
+<div align="center">
+   <img src="./.github/uber.gif" width="480">
+</div>   
+
+## :computer: 🚀 Technologies
+This project was made using the follow technologies:
+
+- ✔️ Dart
+
+- ✔️ Flutter
+
+- ✔️ Firebase
+
+# :bug: Issues
+
+Feel free to **file a new issue** with a respective title and description on the the repository. If you already found a solution to your problem, **i would love to review your pull request**!
+
+# :closed_book: License
+
+Made with 💜 by [Isaac Batista](https://github.com/bisaacm1) 🚀.
+This project is under the [MIT license](./LICENSE).
+
+Give a ⭐️ if this project helped you!

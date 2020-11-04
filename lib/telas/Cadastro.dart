@@ -88,55 +88,71 @@ class _CadastroState extends State<Cadastro> {
         title: Text("Cadastro"),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/fundo.png"), fit: BoxFit.cover),
+        ),
         padding: EdgeInsets.all(16),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                TextField(
-                  controller: _controllerNome,
-                  autofocus: true,
-                  keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      hintText: "Nome completo",
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(6))),
+                Material(
+                  borderRadius: BorderRadius.circular(6),
+                  elevation: 30.0,
+                  child: TextField(
+                    controller: _controllerNome,
+                    autofocus: true,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(fontSize: 20),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        hintText: "Nome completo",
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6))),
+                  ),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 4,
                 ),
-                TextField(
-                  controller: _controllerEmail,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      hintText: "E-mail",
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(6))),
+                Material(
+                  borderRadius: BorderRadius.circular(6),
+                  elevation: 30.0,
+                  child: TextField(
+                    controller: _controllerEmail,
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(fontSize: 20),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        hintText: "E-mail",
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6))),
+                  ),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 4,
                 ),
-                TextField(
-                  controller: _controllerSenha,
-                  obscureText: true,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      hintText: "Senha",
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(6))),
+                Material(
+                  borderRadius: BorderRadius.circular(6),
+                  elevation: 30.0,
+                  child: TextField(
+                    controller: _controllerSenha,
+                    obscureText: true,
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(fontSize: 20),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        hintText: "Senha",
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6))),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 8),
@@ -146,12 +162,17 @@ class _CadastroState extends State<Cadastro> {
                       Text(
                         "Passageiro",
                         style: TextStyle(
-                          // color: Colors.white,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Switch(
+                          activeColor: Color(0xff1ebbd8),
+                          //activeTrackColor: Color(0xff1ebbd8),
+
+                          inactiveThumbColor: Colors.black,
+                          inactiveTrackColor: Colors.grey[900].withOpacity(0.8),
                           value: _tipoUsuario,
                           onChanged: (bool valor) {
                             setState(() {
@@ -161,7 +182,7 @@ class _CadastroState extends State<Cadastro> {
                       Text(
                         "Motorista",
                         style: TextStyle(
-                          // color: Colors.white,
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -171,18 +192,26 @@ class _CadastroState extends State<Cadastro> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 8, bottom: 10),
-                  child: RaisedButton(
-                      child: Text(
-                        "Cadastrar",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6)),
-                      color: Color(0xff1ebbd8),
-                      padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      onPressed: () {
-                        _validarCampos();
-                      }),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(6),
+                    elevation: 30.0,
+                    child: RaisedButton(
+                        child: Text(
+                          "Cadastrar",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)),
+                        color: Color(0xff1ebbd8),
+                        padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        onPressed: () {
+                          _validarCampos();
+                        }),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 16),
