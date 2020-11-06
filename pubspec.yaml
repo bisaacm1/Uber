@@ -34,6 +34,14 @@ dependencies:
   google_maps_flutter: ^0.5.20+1
   geolocator: ^5.1.1+1
   intl: ^0.15.8
+  audioplayers: ^0.16.1
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  image_path: 'assets/images/icon.png'
+  android: true
+  ios: true
+
 
 dev_dependencies:
   flutter_test:
